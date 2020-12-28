@@ -18,13 +18,18 @@ export default {
     }
   },
   methods: {
-    addTodo() {
+    addTodo(e) {
+      e.preventDefault();
       const newTodo = {
+        id: uuid.v4(),
         title: this.title,
         completed: false
       }
       // Send up to parent
       this.$emit('add-todo', newTodo);
+
+      this.title = '';
+      console.log(this);
     }
   }
 }
